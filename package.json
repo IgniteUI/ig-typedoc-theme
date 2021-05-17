@@ -1,0 +1,47 @@
+{
+  "name": "ig-typedoc-theme",
+  "version": "1.0.0",
+  "description": "custom theme for typdoc API documentation",
+  "author": "Infragistics",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp typedocBuild",
+    "typedoc:dev": "gulp typedocDev"
+  },
+  "keywords": [
+    "typedoc",
+    "theme",
+    "api",
+    "custom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgniteUI/ig-typedoc-theme"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-shell": "^0.7.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
+    "handlebars": "^4.7.6",
+    "slash": "^3.0.0",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/lunr": "^2.3.3",
+    "handlebars": "^4.7.6",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
+  }
+}
