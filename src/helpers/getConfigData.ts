@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-export function getConfigData(prop: string, lang) {
+export function getConfigData(prop: string, lang: any) {
   const fileName = 'config.json';
   let config;
   let data;
