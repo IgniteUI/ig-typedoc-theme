@@ -1,6 +1,5 @@
 {
     "include": ["src/assets/js/src/**/*.ts"],
-    "exclude": ["src/assets/js/src/theme.ts"],
     "compilerOptions": {
         "target": "ES5",
         "module": "ES2015",
@@ -11,7 +10,6 @@
         "strict": true,
         "alwaysStrict": false,
         "noImplicitUseStrict": true,
-        "noImplicitThis": false,
         "moduleResolution": "node"
     }
 }
