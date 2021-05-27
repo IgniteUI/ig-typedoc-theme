@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "build": "webpack --mode=production --node-env=production && gulp buildTypedocTs",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development && gulp buildTypedocTs",
+    "build:prod": "webpack --mode=production --node-env=production && gulp buildTypedocTs",
     "watch": "webpack --watch",
     "serve": "webpack serve"
   },

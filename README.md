@@ -1,9 +1,10 @@
-# igniteui-typedoc-theme
-![Build Status](https://travis-ci.org/IgniteUI/igniteui-typedoc-theme.svg?branch=master)
+# ig-typedoc-theme
 
-This package represents the feel and look of the infragistics API typedoc documentations.
+This package extends [igniteui-typedoc-theme](https://github.com/IgniteUI/igniteui-typedoc-theme) and represents the feel and look of the infragistics API **EN** and **JP** typedoc documentations.
 There are a specific global header and footer declarations that could be easily edited based on user's preferences.
 
-The output of the theme could be seen on [this web app](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/)
+It includes specific internationalization configurations and depends on the [typedoc plugin](https://github.com/IgniteUI/typedoc-plugin-localization) package.
 
-Example: This theme is used by other documentations within (or external) of the Infragistics organization - e.g. Reveal API documentation. Using of the theme externaly is also possible.
+The output of the theme could be seen on:
+* [EN API web app](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/)
+* [JP API web app](https://jp.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/)
