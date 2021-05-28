@@ -3,10 +3,7 @@ const path = require('path');
 const slash = require('slash');
 const ts = require('gulp-typescript');
 const { series } = require('gulp');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 
 const TYPEDOC_THEME = {
   SRC: slash(path.join(__dirname, 'src')),
@@ -20,7 +17,6 @@ const TYPEDOC_THEME = {
       }
   }
 };
-
 
 const typedocBuildThemeTS = () => {
   return src(
@@ -46,19 +42,17 @@ const buildHelpers = () => {
   .pipe(dest(slash(path.join(__dirname, 'dist', 'helpers'))));
 };
 
-const typedocCopyStyles = () => {
-  const prefixer = postcss([autoprefixer({
-    overrideBrowserslist: ['last 5 versions', '> 3%'],
-    cascade: false,
-    grid: false
-  })]);
+const typedocMinifyJS = (cb) => {
+    src([
+        slash(path.join(TYPEDOC_THEME.SRC, 'assets','js', 'src', 'navigation/igviewer.common.js')),
+        slash(path.join(TYPEDOC_THEME.SRC, 'assets','js', 'src', 'navigation/igviewer.renderingService.js')),
+        slash(path.join(TYPEDOC_THEME.SRC, 'assets','js', 'src', 'navigation/nav-initializer.js')),
+        slash(path.join(TYPEDOC_THEME.SRC, 'assets','js', 'src', 'versioning/tag-versions.req.js'))
+    ])
+    .pipe(concat('nav-and-versioning.js'))
+    .pipe(dest(slash(path.join(TYPEDOC_THEME.DIST, 'assets', 'js'))));
 
-  return src(slash(path.join(TYPEDOC_THEME.SRC, TYPEDOC_THEME.STYLES.ENTRY)))
-    .pipe(sourcemaps.init())
-    .pipe(sass.sync(TYPEDOC_THEME.STYLES.CONFIG).on('error', sass.logError))
-    .pipe(prefixer)
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest(slash(path.join(TYPEDOC_THEME.DIST, TYPEDOC_THEME.STYLES.OUT))));
-};
+    cb();
+  };
 
-module.exports.buildTypedocTs = series(typedocBuildThemeTS, buildHelpers, typedocCopyStyles);
+module.exports.buildTypedocTs = series(typedocBuildThemeTS, buildHelpers, typedocMinifyJS);

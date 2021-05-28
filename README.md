@@ -5,6 +5,6 @@ There are a specific global header and footer declarations that could be easily 
 
 It includes specific internationalization configurations and depends on the [typedoc plugin](https://github.com/IgniteUI/typedoc-plugin-localization) package.
 
-The output of the theme could be seen on: 
+The output of the theme could be seen on:
 * [EN API web app](https://www.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/)
 * [JP API web app](https://jp.infragistics.com/products/ignite-ui-angular/docs/typescript/latest/)
