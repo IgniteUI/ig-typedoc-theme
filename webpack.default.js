@@ -15,7 +15,7 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.png$/,
+                test: /\.(png|svg)$/,
                 loader: "file-loader",
                 options: {
                     outputPath: "assets/images",
@@ -45,6 +45,15 @@ const config = {
                     context: path.resolve(__dirname),
                     from: "config.json",
                     to: path.resolve(__dirname, "dist"),
+                },
+            ],
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    context: path.resolve(__dirname, "src", "assets", "images"),
+                    from: "**/*.svg",
+                    to: path.resolve(__dirname, "dist", "assets", "images"),
                 },
             ],
         }),
