@@ -1,4 +1,6 @@
 import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from 'typedoc';
+import { navEn } from './infranav';
+import { navJp } from './infranav.ja';
 
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
     const local = context.options.getValue('localize');
@@ -8,7 +10,7 @@ export const header = (context: DefaultThemeRenderContext, props: PageEvent<Refl
 
     return (
         <header class="tsd-header">
-        {/* {{#ifCond project.localization '==' 'jp'}}{{> infranav.ja }}{{else}}{{> infranav }}{{/ifCond}} */}
+            {local === 'en' ? navJp(context, props) : navEn(context, props)}
             <div class="tsd-header-content">
                 <div class="tsd-header-group">
                     <h1 class="tsd-header-logo">

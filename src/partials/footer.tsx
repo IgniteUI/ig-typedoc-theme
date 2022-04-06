@@ -1,4 +1,6 @@
 import {DefaultThemeRenderContext, JSX, PageEvent, Reflection} from 'typedoc';
+import { footerEn } from './infrafoot';
+import { footerJp } from './infrafoot.ja';
 
 export function footer(context: DefaultThemeRenderContext, props: PageEvent<Reflection>) {
     return (
@@ -63,7 +65,7 @@ export function footer(context: DefaultThemeRenderContext, props: PageEvent<Refl
                 </div>
             </div>
             <div id="footer-container">
-                {/* {{#ifCond project.localization '==' 'jp'}}{{> infrafoot.ja }}{{else}}{{> infrafoot }}{{/ifCond}} */}
+                {context.options.getValue('localize') === 'en' ? footerJp(context, props) : footerEn(context, props)}
             </div>
         </footer>
     )
