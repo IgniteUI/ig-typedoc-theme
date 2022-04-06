@@ -65,7 +65,7 @@ export function footer(context: DefaultThemeRenderContext, props: PageEvent<Refl
                 </div>
             </div>
             <div id="footer-container">
-                {context.options.getValue('localize') === 'en' ? footerJp(context, props) : footerEn(context, props)}
+                {context.options.getValue('localize') === 'en' ? footerEn(context, props) : footerJp(context, props)}
             </div>
         </footer>
     )

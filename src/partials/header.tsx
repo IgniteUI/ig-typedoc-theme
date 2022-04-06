@@ -10,7 +10,7 @@ export const header = (context: DefaultThemeRenderContext, props: PageEvent<Refl
 
     return (
         <header class="tsd-header">
-            {local === 'en' ? navJp(context, props) : navEn(context, props)}
+            {local === 'en' ? navEn(context, props) : navJp(context, props)}
             <div class="tsd-header-content">
                 <div class="tsd-header-group">
                     <h1 class="tsd-header-logo">
