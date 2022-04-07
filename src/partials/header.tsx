@@ -1,6 +1,7 @@
 import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from 'typedoc';
 import { navEn } from './infranav';
 import { navJp } from './infranav.ja';
+const plugin = require('typedoc-plugin-localization');
 
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
     const local = context.options.getValue('localize');
@@ -27,14 +28,12 @@ export const header = (context: DefaultThemeRenderContext, props: PageEvent<Refl
                         <ul class="tsd-nav">
                             <li class="tsd-nav-item">
                                 <button class="tsd-button--flat">
-                                    {/* {LocalizedLink(props, 'Components')} */}
-                                    <a href={link}>Components</a>
+                                    <a href={link}>{plugin.localize('Components')}</a>
                                 </button>
                             </li>
                             <li class="tsd-nav-item">
                                 <button class="tsd-button">
-                                    {/* {LocalizedLink(props, 'Get Started')} */}
-                                    <a href={link}>Get Started</a>
+                                    <a href={link}>{plugin.localize('Get Started')}</a>
                                 </button>
                             </li>
                         </ul>
