@@ -1,6 +1,7 @@
 import { ContainerReflection, DeclarationReflection, DefaultThemeRenderContext, PageEvent, ReflectionType } from "typedoc"
 import { JSX } from "typedoc"
 import { hasTypeParameters } from "../utils/lib"
+const plugin = require('typedoc-plugin-localization')
 
 export const reflectionTemplate = (context: DefaultThemeRenderContext, props: PageEvent<ContainerReflection>) => (
     <>
@@ -15,13 +16,13 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
             <>
                 {!!props.model.typeHierarchy && (
                     <section class="tsd-panel tsd-hierarchy">
-                        <h3>Hierarchy</h3>
+                        <h3>{plugin.localize('Hierarchy')}</h3>
                         {context.hierarchy(props.model.typeHierarchy)}
                     </section>
                 )}
                 {!!props.model.implementedTypes && (
                     <section class="tsd-panel">
-                        <h3>Implements</h3>
+                        <h3>{plugin.localize('Implements')}</h3>
                         <ul class="tsd-hierarchy">
                             {props.model.implementedTypes.map((item) => (
                                 <li>{context.type(item)}</li>
@@ -31,7 +32,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                 )}
                 {!!props.model.implementedBy && (
                     <section class="tsd-panel">
-                        <h3>Implemented by</h3>
+                        <h3>{plugin.localize('Implemented by')}</h3>
                         <ul class="tsd-hierarchy">
                             {props.model.implementedBy.map((item) => (
                                 <li>{context.type(item)}</li>
@@ -41,7 +42,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                 )}
                 {!!props.model.signatures && (
                     <section class="tsd-panel">
-                        <h3 class="tsd-before-signature">Callable</h3>
+                        <h3 class="tsd-before-signature">{plugin.localize('Callable')}</h3>
                         {context.memberSignatures(props.model)}
                     </section>
                 )}

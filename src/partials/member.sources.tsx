@@ -1,4 +1,5 @@
 import { DeclarationReflection, DefaultThemeRenderContext, JSX, SignatureReflection } from 'typedoc';
+const plugin = require('typedoc-plugin-localization');
 
 export const memberSources = (
     context: DefaultThemeRenderContext,
@@ -9,7 +10,7 @@ export const memberSources = (
     if (props.implementationOf) {
         sources.push(
             <p>
-                {"Implementation of "}
+                {plugin.localize('Implementation of') + ' '}
                 {context.typeAndParent(props.implementationOf)}
             </p>
         );
@@ -17,7 +18,7 @@ export const memberSources = (
     if (props.inheritedFrom) {
         sources.push(
             <p>
-                {"Inherited from "}
+                {plugin.localize('Inherited from') + ' '}
                 {context.typeAndParent(props.inheritedFrom)}
             </p>
         );
@@ -25,7 +26,7 @@ export const memberSources = (
     if (props.overwrites) {
         sources.push(
             <p>
-                {"Overrides "}
+                {plugin.localize('Overrides') + ' '}
                 {context.typeAndParent(props.overwrites)}
             </p>
         );
@@ -36,14 +37,14 @@ export const memberSources = (
                 {props.sources.map((item) =>
                     item.url ? (
                         <li>
-                            {"Defined in "}
+                            {plugin.localize('Defined in') + ' '}
                             <a href={item.url}>
                                 {item.fileName}:{item.line}
                             </a>
                         </li>
                     ) : (
                         <li>
-                            Defined in {item.fileName}:{item.line}
+                            {plugin.localize('Defined in') + ' '} {item.fileName}:{item.line}
                         </li>
                     )
                 )}

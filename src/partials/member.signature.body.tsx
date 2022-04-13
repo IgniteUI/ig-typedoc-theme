@@ -1,6 +1,6 @@
 import { DefaultThemeRenderContext, JSX, ReflectionType, SignatureReflection } from 'typedoc';
-import { Raw } from 'typedoc/dist/lib/utils';
 import { renderFlags } from '../utils/lib';
+const plugin = require('typedoc-plugin-localization');
 
 export const memberSignatureBody = (
     context: DefaultThemeRenderContext,
@@ -13,13 +13,13 @@ export const memberSignatureBody = (
 
         {!!props.typeParameters && (
             <>
-                <h4 class="tsd-type-parameters-title">Type parameters</h4>
+                <h4 class="tsd-type-parameters-title">{plugin.localize('Type parameters')}</h4>
                 {context.typeParameters(props.typeParameters)}
             </>
         )}
         {props.parameters && props.parameters.length > 0 && (
             <>
-                <h4 class="tsd-parameters-title">Parameters</h4>
+                <h4 class="tsd-parameters-title">{plugin.localize('Parameters')}</h4>
                 <ul class="tsd-parameters">
                     {props.parameters.map((item) => (
                         <li>
@@ -46,12 +46,12 @@ export const memberSignatureBody = (
         {props.type && (
             <>
                 <h4 class="tsd-returns-title">
-                    {"Returns "}
+                    {plugin.localize('Returns') + ' '}
                     {context.type(props.type)}
                 </h4>
                 {!!props.comment?.returns && (
                     <div>
-                        <Raw html={context.markdown(props.comment.returns)} />
+                        <JSX.Raw html={context.markdown(props.comment.returns)} />
                     </div>
                 )}
                 {props.type instanceof ReflectionType && context.parameter(props.type.declaration)}

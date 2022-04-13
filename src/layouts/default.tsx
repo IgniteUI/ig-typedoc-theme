@@ -1,9 +1,9 @@
-import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from "typedoc"
-import { analytics } from "../partials/analytics"
+import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from "typedoc";
+import { analytics } from "../partials/analytics";
 import { footer } from "../partials/footer";
 import { header } from "../partials/header";
 import { navigation } from "../partials/navigation";
-import { getConfigData, hasTypeParameters, join } from "../utils/lib"
+import { getConfigData, hasTypeParameters, join } from "../utils/lib";
 const plugin = require('typedoc-plugin-localization');
 
 export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
@@ -45,7 +45,6 @@ export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEve
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <link rel="stylesheet" href="https://use.typekit.net/zhy2hpz.css" />
                 <link rel="stylesheet" href={context.relativeURL("assets/css/main.css")} />
-                {/* <link rel="stylesheet" href={context.relativeURL("assets/custom.css")} /> */}
 
                 <script async src={context.relativeURL("assets/search.js")} id="search-script"></script>
 
