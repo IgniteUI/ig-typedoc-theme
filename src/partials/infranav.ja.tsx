@@ -26,7 +26,6 @@ export function navJp(context: DefaultThemeRenderContext, props: PageEvent<Refle
                         <nav class="globalnav__menu-container">
                             <ul class="navigation navigation--xs navigation--hpad-0">
                                 <li class="navigation__text deemphasize" style="width: auto;">インフラジスティックス・ジャパン株式会社: 050 (1745) 6258</li>
-                                <li><a data-id="12408" href="/about-us/contact-us" class="mchNoDecorate">お問い合わせ先</a></li>
                                 <li class="navigation__account">
                                     <a class="signInLink mchNoDecorate" href="https://jp.infragistics.com/my-account/keys-and-downloads">アカウント</a>
                                 </li>
@@ -109,9 +108,9 @@ export function navJp(context: DefaultThemeRenderContext, props: PageEvent<Refle
                             </li>
                             <li><a href="https://www.revealbi.io/jp" class="mchNoDecorate">データ可視化</a></li>
                             <li>
-                                <a class="navigation__sub-menu mchNoDecorate" title="Team Productivity" href="https://www.slingshotapp.io">Team Productivity</a>
+                                <a class="navigation__sub-menu mchNoDecorate" title="チームコラボレーション" href="https://www.slingshotapp.io">チームコラボレーション</a>
                                 <ul style="display: none;">
-                                    <li><a title="Slingshot" href="https://www.slingshotapp.io" class="mchNoDecorate">Slingshot <span class="deemphasize">Connect everyone you work with to data, project management, content and chats for better results.</span></a></li>
+                                    <li><a title="Slingshot" href="https://www.slingshotapp.io" class="mchNoDecorate">Slingshot <span class="deemphasize">データ、プロジェクト管理、コンテンツ、チャット。チームの可能性を最大限に引き出すタスク・プロジェクト管理ツール</span></a></li>
                                 </ul>
                             </li>
                             <li><a data-id="12491" href="/consulting" class="mchNoDecorate">サービス</a></li>

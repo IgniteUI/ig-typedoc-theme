@@ -1,5 +1,5 @@
 import { DefaultThemeRenderContext, Reflection, JSX } from "typedoc";
-
+const plugin = require('typedoc-plugin-localization');
 
 export const breadcrumb = (context: DefaultThemeRenderContext, props: Reflection): JSX.Element | undefined =>
     props.parent ? (
@@ -9,6 +9,6 @@ export const breadcrumb = (context: DefaultThemeRenderContext, props: Reflection
         </>
     ) : props.url ? (
         <li>
-            <a href={context.urlTo(props)}>{props.name}</a>
+            <a href={context.urlTo(props)}>{plugin.localize('Globals')}</a>
         </li>
     ) : undefined;

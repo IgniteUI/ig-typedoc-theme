@@ -6,6 +6,7 @@ import { memberDeclaration } from './partials/member.declarations';
 import { reflectionTemplate } from './templates/reflection';
 import { comment } from './partials/comment';
 import { memberSignatureBody } from './partials/member.signature.body';
+import { breadcrumb } from './partials/breadcrumb';
 
 import { Application, DefaultTheme, DefaultThemeRenderContext, JSX, Options, PageEvent, Reflection, Renderer, RendererEvent } from "typedoc";
 import { defaultLayout } from "./layouts/default";
@@ -24,6 +25,7 @@ export class IgThemeRenderContext extends DefaultThemeRenderContext {
         this.memberSources = bind(memberSources, this);
         this.memberDeclaration = bind(memberDeclaration, this);
         this.memberSignatureBody = bind(memberSignatureBody, this);
+        this.breadcrumb = bind(breadcrumb, this);
 
         this.defaultLayout = (props: PageEvent<Reflection>) => {
             return (
