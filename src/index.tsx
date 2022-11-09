@@ -1,10 +1,10 @@
 import path from 'path';
 import { copy } from "fs-extra";
 import { navigation } from './partials/navigation';
+import { index } from './partials/index';
 import { memberSources } from './partials/member.sources';
 import { memberDeclaration } from './partials/member.declarations';
 import { reflectionTemplate } from './templates/reflection';
-import { comment } from './partials/comment';
 import { memberSignatureBody } from './partials/member.signature.body';
 import { breadcrumb } from './partials/breadcrumb';
 
@@ -21,7 +21,7 @@ export class IgThemeRenderContext extends DefaultThemeRenderContext {
 
         this.reflectionTemplate = bind(reflectionTemplate, this);
         this.navigation = bind(navigation, this);
-        this.comment = bind(comment, this);
+        this.index = bind(index, this);
         this.memberSources = bind(memberSources, this);
         this.memberDeclaration = bind(memberDeclaration, this);
         this.memberSignatureBody = bind(memberSignatureBody, this);
