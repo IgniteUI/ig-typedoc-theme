@@ -8,7 +8,6 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
         {props.model.hasComment() && <section class="tsd-panel tsd-comment">{context.comment(props.model)}</section>}
         {hasTypeParameters(props.model) && (
             <section class="tsd-panel tsd-type-parameters">
-                {/* <h3>{{#localize}}Type parameters{{/localize}}</h3> */}
                 {context.typeParameters(props.model.typeParameters)}
             </section>
         )}
@@ -50,7 +49,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                     <section class={"tsd-panel " + props.model.cssClasses}>
                         <h3 class="tsd-before-signature">Indexable</h3>
                         <div class="tsd-signature tsd-kind-icon">
-                            <span class="tsd-signature-symbol">[</span>
+                            <span class="tsd-signature-symbol"></span>
                             {props.model.indexSignature.parameters!.map((item) => (
                                 <>
                                     {item.name}: {context.type(item.type)}
