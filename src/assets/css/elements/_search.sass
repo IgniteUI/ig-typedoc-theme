@@ -16,7 +16,7 @@
             font-size: 13px
             outline: 0
             border: 0
-            color: $COLOR_TEXT
+            color: var(--TDT-COLOR_TEXT)
 
         label
             position: relative
@@ -44,17 +44,17 @@
 
         li
             padding: 0
-            background-color: $COLOR_BACKGROUND
+            background-color: var(--TDT-COLOR_BACKGROUND)
 
         li:nth-child(even)
-            background-color: $COLOR_PANEL
+            background-color: var(--TDT-COLOR_PANEL)
 
         li.state
             display: none
 
         li.current,
         li:hover
-            background-color: $COLOR_PANEL_DIVIDER
+            background-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
         a
             display: block
@@ -67,11 +67,11 @@
                 text-decoration: none
 
         span.parent
-            color: $COLOR_TEXT_ASIDE
+            color: var(--TDT-COLOR_TEXT_ASIDE)
             font-weight: normal
 
     &.has-focus
-        background-color: $COLOR_PANEL_DIVIDER
+        background-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
         .field input
             top: 0

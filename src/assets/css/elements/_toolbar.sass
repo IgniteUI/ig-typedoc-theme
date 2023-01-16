@@ -16,10 +16,10 @@
     top: 0
     left: 0
     width: 100%
-    color: $TOOLBAR_TEXT_COLOR
+    color: var(--TDT-TOOLBAR_TEXT_COLOR)
 
     a
-        color: $TOOLBAR_TEXT_COLOR
+        color: var(--TDT-TOOLBAR_TEXT_COLOR)
         text-decoration: none
 
         &.title
@@ -31,13 +31,13 @@
     .table-wrap
         display: table
         width: 100%
-        height: $TOOLBAR_HEIGHT
+        height: var(--TDT-TOOLBAR_HEIGHT)
 
     .table-cell
         display: table-cell
         position: relative
         white-space: nowrap
-        line-height: $TOOLBAR_HEIGHT
+        line-height: var(--TDT-TOOLBAR_HEIGHT)
 
         &:first-child
             width: 100%
@@ -82,7 +82,7 @@
 
     &.active
         opacity: 1
-        background-color: $COLOR_PANEL_DIVIDER
+        background-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
     &.no-caption
         width: 40px
@@ -153,13 +153,13 @@
         li
             @extend %TSD_WIDGET_ICON-MATERIAL
             padding: 5px 0
-            background-color: $COLOR_BACKGROUND
+            background-color: var(--TDT-COLOR_BACKGROUND)
 
             &:nth-child(even)
-                background-color: $COLOR_PANEL
+                background-color: var(--TDT-COLOR_PANEL)
 
             &:hover
-                background-color: $COLOR_PANEL_DIVIDER
+                background-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
             &.selected:before
                 font-size: 14px
