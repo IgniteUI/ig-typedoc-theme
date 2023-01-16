@@ -4,6 +4,9 @@ import { navJp } from './infranav.ja';
 const plugin = require('typedoc-plugin-localization');
 
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
+    if (!context.options.getValue('name').includes('Ignite UI')) {
+        return;
+    }
     const local = context.options.getValue('localize');
     const link = local === 'jp' ?
         'https://jp.infragistics.com/products/ignite-ui-angular' :
