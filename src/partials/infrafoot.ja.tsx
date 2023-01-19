@@ -119,7 +119,7 @@ export function footerJp(context: DefaultThemeRenderContext, props: PageEvent<Re
             </div>
         </footer><footer id="footer">
                 <div id="footer-wrap" class="be-wrap clearfix">
-                    <div id="copyright">© Copyright 2022 INFRAGISTICS. All Rights Reserved</div>
+                    <div id="copyright">© Copyright 2023 INFRAGISTICS. All Rights Reserved</div>
                 </div>
         </footer></>
     )
