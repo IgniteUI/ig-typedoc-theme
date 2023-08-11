@@ -1,12 +1,12 @@
 body
-    background: $COLOR_BACKGROUND
-    font-family: $FONT_FAMILY
-    font-size: $FONT_SIZE
-    color: $COLOR_TEXT
+    background: var(--TDT-COLOR_BACKGROUND)
+    font-family: var(--TDT-FONT_FAMILY)
+    font-size: var(--TDT-FONT_SIZE)
+    color: var(--TDT-COLOR_TEXT)
     -webkit-font-smoothing: antialiased
 
 a
-    color: $COLOR_LINK
+    color: var(--TDT-COLOR_LINK)
     text-decoration: none
 
     &:hover
@@ -14,11 +14,11 @@ a
 
 code,
 pre
-    font-family: $FONT_FAMILY_MONO
+    font-family: var(--TDT-FONT_FAMILY_MONO)
     padding: .2em
     margin: 0
-    font-size: $FONT_SIZE_MONO
-    background-color: $COLOR_CODE_BACKGROUND
+    font-size: var(--TDT-FONT_SIZE_MONO)
+    background-color: var(--TDT-COLOR_CODE_BACKGROUND)
 
 pre
     padding: 10px
@@ -29,7 +29,7 @@ pre
         background-color: transparent
 
 .tsd-typography
-    line-height: $LINE_HEIGHT
+    line-height: var(--TDT-LINE_HEIGHT)
 
     ul
         list-style: square

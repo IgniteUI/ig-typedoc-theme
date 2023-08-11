@@ -19,10 +19,10 @@
         display: inline-block
         padding-top: 6px
         font-size: 13px
-        color: $COLOR_TEXT
+        color: var(--TDT-COLOR_TEXT)
         text-decoration: none
         &:hover
-            color: #09f
+            color: var(--TDT-PRIMARY)
 
     ul
         margin: 0
@@ -67,7 +67,7 @@
         &.label span
             display: block
             padding: 16px 0 4px 5px
-            color: $COLOR_MENU_LABEL
+            color: var(--TDT-COLOR_MENU_LABEL)
 
         &.globals + li > span,
         &.globals + li > a
@@ -107,14 +107,14 @@
         transition: opacity 0.2s
 
         &.current a
-            border-left-color: $COLOR_PANEL_DIVIDER
+            border-left-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
     li.focus > a,
     ul.current li.focus > a
-        border-left-color: $COLOR_MENU_DIVIDER_FOCUS
+        border-left-color: var(--TDT-COLOR_MENU_DIVIDER_FOCUS)
 
     li.current
-        border-left-color: $COLOR_PANEL_DIVIDER
+        border-left-color: var(--TDT-COLOR_PANEL_DIVIDER)
 
         > a
             font-weight: bold
