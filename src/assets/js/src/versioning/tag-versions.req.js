@@ -1,7 +1,6 @@
 (function () {
-    let baseUrl = $('body').data('base-url');
     const versionsJson = $('body').data('api-versions-json');
-
+    const defaultUrl = $('body').data('default-url');
     $.ajax({
         url: versionsJson,
         type: "get",
@@ -14,20 +13,19 @@
         const select = $('#versions');
 
         folders = folders.reverse();
-
-        baseUrl += "/products/ignite-ui-angular/docs/";
         folders.forEach(function (f) {
+            const versionUrl = defaultUrl.replace("typescript/latest'", f + "/typescript")
             select.append($('<option>', {
-                value: baseUrl + f + "/typescript",
+                value: versionUrl,
                 text: f
             }));
         });
 
         const version = folders.filter(function(v){ return window.location.href.indexOf(v) >= 0;})[0];
         if (version) {
-            select.val(baseUrl + version + "/typescript");
+            select.val(versionUrl);
         } else {
-            select.val(baseUrl + folders[0] + "/typescript");
+            select.val(versionUrl);
         }
     });
 
