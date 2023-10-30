@@ -94,10 +94,13 @@ export function stringify(data: unknown) {
 }
 
 export function getConfigData(context: DefaultThemeRenderContext, prop: string, lang?: string): string {
-    const fileName = 'config.json';
+    const product = context.options.getValue('product') as string;
+    const prodArr = product.split('-');
+    const prodName = prodArr[prodArr.length - 1];
+    const fileName = prodName == 'angular' ? 'config.json' : prodName + '.config.json';
+    const filePath = getConfigFilePath(fileName);
 
-    const normalizedPath = path.join(__dirname, '..' , fileName);
-    const config = JSON.parse(fs.readFileSync(normalizedPath, 'utf8'));
+    const config = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     const settingOpt =  context.options.getValue('localize') as string;
     const getLang = lang ? lang : settingOpt;
 
@@ -108,4 +111,14 @@ export function getConfigData(context: DefaultThemeRenderContext, prop: string, 
 
     const res = data ? data[prop] : '';
     return res;
+}
+
+export function getConfigFilePath(fileName: string) : string {
+    const normalizedPath = path.join(__dirname, '..' , fileName);
+    if (fs.existsSync(normalizedPath)) {
+        return normalizedPath;
+    } else {
+        // fallback to default config
+        return path.join(__dirname, '..' , 'config.json');
+    }
 }
