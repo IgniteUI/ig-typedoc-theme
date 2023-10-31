@@ -79,7 +79,7 @@ const config = {
             patterns: [
                 {
                     context: path.resolve(__dirname),
-                    from: "config.json",
+                    from: "*config.json",
                     to: path.resolve(__dirname, "dist"),
                 },
             ],

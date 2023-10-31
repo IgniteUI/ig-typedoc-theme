@@ -12,6 +12,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEve
     const baseUrl = getConfigData(context, 'url');
     const apiJsonFile = getConfigData(context, 'versions');
     const searchPath = getConfigData(context, 'assets/js/search.json');
+    const defaultUrl =  getConfigData(context, 'typedoc_default_url')
     const gaID = getConfigData(context, 'gaID');
     return (
         <html class="default no-js" lang="en">
@@ -51,7 +52,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEve
                 {analytics(context)}
                 {context.hook("head.end")}
             </head>
-            <body id="body" data-base-url={baseUrl} data-api-versions-json={apiJsonFile}>
+            <body id="body" data-base-url={baseUrl} data-api-versions-json={apiJsonFile} default-url={defaultUrl}>
                 {context.hook('body.begin')}
                 {/* Google Tag Manager (noscript) */}
                 <noscript>
