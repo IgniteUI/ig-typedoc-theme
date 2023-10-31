@@ -4,10 +4,16 @@ import { navJp } from './infranav.ja';
 const plugin = require('typedoc-plugin-localization');
 
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
+    if (!context.options.getValue('name').includes('Ignite UI')) {
+        return;
+    }
+
     const local = context.options.getValue('localize');
+    const useVersioning = context.options.getValue('versioning');
+    const product = context.options.getValue('product');
     const link = local === 'jp' ?
-        'https://jp.infragistics.com/products/ignite-ui-angular' :
-        'https://www.infragistics.com/products/ignite-ui-angular';
+        `https://jp.infragistics.com/products/${product}` :
+        `https://www.infragistics.com/products/${product}`;
 
     return (
         <header class="tsd-header">
@@ -16,9 +22,11 @@ export const header = (context: DefaultThemeRenderContext, props: PageEvent<Refl
                 <div class="tsd-header-group">
                     <h1 class="tsd-header-logo">
                         <a href={link}>{props.project.name}</a>
-                        <span class="version">
-                            <select id="versions"></select>
-                        </span>
+                        {useVersioning &&
+                            <span class="version">
+                                <select id="versions"></select>
+                            </span>
+                        }
                     </h1>
                     <div class="tsd-nav-toggle">
                         <input id="tsd-toggle-cbx" type="checkbox" />
