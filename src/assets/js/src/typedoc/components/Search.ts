@@ -125,24 +125,31 @@ function bindEvents(
     });
 }
 
-function checkIndex(state: SearchState, searchEl: HTMLElement) {
+async function checkIndex(state: SearchState, searchEl: HTMLElement) {
     if (state.index) return;
 
     if (window.searchData) {
         searchEl.classList.remove("loading");
         searchEl.classList.add("ready");
-        state.data = window.searchData;
-        state.index = Index.load(window.searchData.index);
+
+        const res = await fetch(window.searchData as unknown as RequestInfo);
+        const json = new Blob([await res.arrayBuffer()])
+            .stream()
+            .pipeThrough(new DecompressionStream("gzip"));
+
+        const data: IData = await new Response(json).json();
+        state.data = data;
+        state.index = Index.load(data.index);
     }
 }
 
-function updateResults(
+async function updateResults(
     searchEl: HTMLElement,
     results: HTMLElement,
     query: HTMLInputElement,
     state: SearchState
 ) {
-    checkIndex(state, searchEl);
+    await checkIndex(state, searchEl);
     // Don't clear results if loading state is not ready,
     // because loading or error message can be removed.
     if (!state.index || !state.data) return;

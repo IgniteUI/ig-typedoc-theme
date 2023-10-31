@@ -39,7 +39,7 @@ function secondaryNavigation(context: DefaultThemeRenderContext, props: PageEven
                 .filter((child) => !child.kindOf(ReflectionKind.SomeModule))
                 .map((child) => {
                     return (
-                        <li class={child.cssClasses}>
+                        <li class={ReflectionKind.classString(child.kind)}>
                             <a href={context.urlTo(child)} class="tsd-kind-icon">
                                 {wbr(child.name)}
                             </a>
@@ -56,7 +56,7 @@ function secondaryNavigation(context: DefaultThemeRenderContext, props: PageEven
     return (
         <nav class="tsd-navigation secondary menu-sticky">
             <ul>
-                <li class={"current " + props.model.cssClasses}>
+                <li class={"current " + ReflectionKind.classString(props.model.kind)}>
                     <a href={context.urlTo(props.model)} class="tsd-kind-icon">
                         {wbr(props.model.name)}
                     </a>

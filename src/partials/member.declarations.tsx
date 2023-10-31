@@ -25,7 +25,8 @@ export const memberDeclaration = (context: DefaultThemeRenderContext, props: Dec
 
         {context.memberSources(props)}
 
-        {context.comment(props)}
+        {context.commentSummary(props)}
+        {context.commentTags(props)}
 
         {!!props.typeParameters && (
             <>

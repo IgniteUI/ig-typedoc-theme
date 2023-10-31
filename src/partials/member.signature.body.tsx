@@ -9,7 +9,8 @@ export const memberSignatureBody = (
 ) => (
     <>
         {!hideSources && context.memberSources(props)}
-        {context.comment(props)}
+        {context.commentSummary(props)}
+        {context.commentTags(props)}
 
         {!!props.typeParameters && (
             <>
@@ -36,7 +37,8 @@ export const memberSignatureBody = (
                                     </span>
                                 )}
                             </h5>
-                            {context.comment(item)}
+                            {context.commentSummary(item)}
+                            {context.commentTags(item)}
                             {item.type instanceof ReflectionType && context.parameter(item.type.declaration)}
                         </li>
                     ))}

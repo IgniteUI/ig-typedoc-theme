@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { DeclarationReflection, Reflection, SignatureReflection, TypeParameterReflection, JSX, DefaultThemeRenderContext, ReflectionFlags } from "typedoc";
+import { DeclarationReflection, Reflection, SignatureReflection, TypeParameterReflection, JSX, DefaultThemeRenderContext, ReflectionFlags, ReflectionKind } from "typedoc";
 
 export function hasTypeParameters(
     reflection: Reflection
@@ -40,7 +40,7 @@ export function renderTypeParametersSignature(
                 <>
                     <span class="tsd-signature-symbol">{"<"}</span>
                     {join(<span class="tsd-signature-symbol">{", "}</span>, typeParameters, (item) => (
-                        <span class="tsd-signature-type" data-tsd-kind={item.kindString}>
+                        <span class="tsd-signature-type" data-tsd-kind={ReflectionKind.singularString(item.kind)}>
                             {item.name}
                         </span>
                     ))}
