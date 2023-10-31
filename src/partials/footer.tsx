@@ -3,6 +3,10 @@ import { footerEn } from './infrafoot';
 import { footerJp } from './infrafoot.ja';
 
 export function footer(context: DefaultThemeRenderContext, props: PageEvent<Reflection>) {
+    if (!context.options.getValue('name').includes('Ignite UI')) {
+        return;
+    }
+
     return (
         <footer>
             <div class="container">
