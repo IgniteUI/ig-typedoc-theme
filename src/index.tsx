@@ -40,12 +40,6 @@ export class IgTheme extends DefaultTheme {
 
     public constructor(renderer: Renderer) {
         super(renderer);
-
-        renderer.on(RendererEvent.END, () => {
-            const from = resolve(__dirname, "./assets");
-            const to = resolve(this.application.options.getValue("out"), "assets");
-            cpSync(from, to, { recursive: true });
-        });
     }
 
     override getRenderContext(pageEvent: PageEvent<Reflection>): IgThemeRenderContext {
@@ -72,6 +66,12 @@ export function load(app: Application) {
             <script src={context.relativeURL('assets/common.js')} />
         )
     )
+
+    app.listenTo(app.renderer, RendererEvent.END, () => {
+        const from = resolve(__dirname, "assets");
+        const to = resolve(app.options.getValue("out"), "assets");
+        cpSync(from, to, { recursive: true });
+    });
 
     app.renderer.defineTheme('igtheme', IgTheme);
 }
