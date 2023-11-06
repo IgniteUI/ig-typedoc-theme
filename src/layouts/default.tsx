@@ -1,4 +1,4 @@
-import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from "typedoc";
+import { DefaultThemeRenderContext, PageEvent, Reflection, ReflectionKind, JSX, RenderTemplate } from "typedoc";
 import { analytics } from "../partials/analytics";
 import { footer } from "../partials/footer";
 import { header } from "../partials/header";
@@ -6,7 +6,7 @@ import { navigation } from "../partials/navigation";
 import { getConfigData, hasTypeParameters, join } from "../utils/lib";
 const plugin = require('typedoc-plugin-localization');
 
-export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
+export const defaultLayout = (context: DefaultThemeRenderContext, template: RenderTemplate<PageEvent<Reflection>>, props: PageEvent<Reflection>) => {
     const defaultEnUrl = getConfigData(context, 'typedoc_default_url', 'en');
     const defaultJpUrl = getConfigData(context, 'typedoc_default_url', 'jp');
     const baseUrl = getConfigData(context, 'url');
@@ -109,7 +109,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEve
                                 <div class="container">
                                     {!!props.model.parent && <ul class="tsd-breadcrumb">{context.breadcrumb(props.model)}</ul>}
                                     <h1>
-                                        {props.model.kindString !== "Project" && `${props.model.kindString ?? ""} `}
+                                        {ReflectionKind.singularString(props.model.kind) !== "Project" && `${ReflectionKind.singularString(props.model.kind) ?? ""} `}
                                         {props.model.name}
                                         {hasTypeParameters(props.model) && (
                                             <>
@@ -121,7 +121,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, props: PageEve
                                     </h1>
                                 </div>
                             </div>
-                            {props.template(props)}
+                            {template(props)}
                         </div>
                     </div>
                 </div>

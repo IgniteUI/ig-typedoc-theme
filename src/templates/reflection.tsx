@@ -1,11 +1,14 @@
-import { ContainerReflection, DeclarationReflection, DefaultThemeRenderContext, PageEvent, ReflectionType } from "typedoc"
+import { ContainerReflection, DeclarationReflection, DefaultThemeRenderContext, PageEvent, ReflectionKind, ReflectionType } from "typedoc"
 import { JSX } from "typedoc"
 import { hasTypeParameters } from "../utils/lib"
 const plugin = require('typedoc-plugin-localization')
 
 export const reflectionTemplate = (context: DefaultThemeRenderContext, props: PageEvent<ContainerReflection>) => (
     <>
-        {props.model.hasComment() && <section class="tsd-panel tsd-comment">{context.comment(props.model)}</section>}
+        {props.model.hasComment() && <section class="tsd-panel tsd-comment">
+            {context.commentSummary(props.model)}
+            {context.commentTags(props.model)}
+        </section>}
         {hasTypeParameters(props.model) && (
             <section class="tsd-panel tsd-type-parameters">
                 {context.typeParameters(props.model.typeParameters)}
@@ -46,7 +49,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                     </section>
                 )}
                 {!!props.model.indexSignature && (
-                    <section class={"tsd-panel " + props.model.cssClasses}>
+                    <section class={"tsd-panel " + ReflectionKind.classString(props.model.kind)}>
                         <h3 class="tsd-before-signature">Indexable</h3>
                         <div class="tsd-signature tsd-kind-icon">
                             <span class="tsd-signature-symbol"></span>
@@ -58,7 +61,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                             <span class="tsd-signature-symbol">{"]: "}</span>
                             {context.type(props.model.indexSignature.type)}
                         </div>
-                        {context.comment(props.model.indexSignature)}
+                        {props.model.indexSignature.comment}
                         {props.model.indexSignature?.type instanceof ReflectionType &&
                             context.parameter(props.model.indexSignature.type.declaration)}
                     </section>

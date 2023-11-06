@@ -1,5 +1,5 @@
-import path from 'path';
-import { copy } from "fs-extra";
+import { cpSync } from 'fs';
+import { resolve } from 'path';
 import { navigation } from './partials/navigation';
 import { index } from './partials/index';
 import { memberSources } from './partials/member.sources';
@@ -8,7 +8,7 @@ import { reflectionTemplate } from './templates/reflection';
 import { memberSignatureBody } from './partials/member.signature.body';
 import { breadcrumb } from './partials/breadcrumb';
 
-import { Application, DefaultTheme, DefaultThemeRenderContext, JSX, Options, PageEvent, Reflection, Renderer, RendererEvent } from "typedoc";
+import { Application, DefaultTheme, DefaultThemeRenderContext, JSX, Options, PageEvent, Reflection, RenderTemplate, Renderer, RendererEvent } from "typedoc";
 import { defaultLayout } from "./layouts/default";
 
 function bind<F, L extends any[], R>(fn: (f: F, ...a: L) => R, first: F) {
@@ -16,8 +16,8 @@ function bind<F, L extends any[], R>(fn: (f: F, ...a: L) => R, first: F) {
 }
 
 export class IgThemeRenderContext extends DefaultThemeRenderContext {
-    constructor(theme: DefaultTheme, options: Options) {
-        super(theme, options);
+    constructor(theme: DefaultTheme, page: PageEvent<Reflection>, options: Options) {
+        super(theme, page, options);
 
         this.reflectionTemplate = bind(reflectionTemplate, this);
         this.navigation = bind(navigation, this);
@@ -27,9 +27,9 @@ export class IgThemeRenderContext extends DefaultThemeRenderContext {
         this.memberSignatureBody = bind(memberSignatureBody, this);
         this.breadcrumb = bind(breadcrumb, this);
 
-        this.defaultLayout = (props: PageEvent<Reflection>) => {
+        this.defaultLayout = (template: RenderTemplate<PageEvent<Reflection>>, props: PageEvent<Reflection>) => {
             return (
-                defaultLayout(this, props)
+                defaultLayout(this, template, props)
             );
         }
     }
@@ -40,23 +40,12 @@ export class IgTheme extends DefaultTheme {
 
     public constructor(renderer: Renderer) {
         super(renderer);
-
-        renderer.on(RendererEvent.END, async () => {
-            const out = this.application.options.getValue('out');
-
-            await copy(
-                path.join(
-                    process.cwd(),
-                    '/node_modules/ig-typedoc-theme/dist/assets',
-                ),
-                path.join(out, '/assets'),
-            );
-        });
     }
 
-    override getRenderContext(): IgThemeRenderContext {
+    override getRenderContext(pageEvent: PageEvent<Reflection>): IgThemeRenderContext {
         this._ctx ||= new IgThemeRenderContext(
             this,
+            pageEvent,
             this.application.options
         );
         return this._ctx;
@@ -77,6 +66,12 @@ export function load(app: Application) {
             <script src={context.relativeURL('assets/common.js')} />
         )
     )
+
+    app.listenTo(app.renderer, RendererEvent.END, () => {
+        const from = resolve(__dirname, "assets");
+        const to = resolve(app.options.getValue("out"), "assets");
+        cpSync(from, to, { recursive: true });
+    });
 
     app.renderer.defineTheme('igtheme', IgTheme);
 }

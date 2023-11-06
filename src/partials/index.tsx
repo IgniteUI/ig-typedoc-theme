@@ -1,4 +1,4 @@
-import { DefaultThemeRenderContext, ReflectionCategory, JSX, ContainerReflection} from "typedoc";
+import { DefaultThemeRenderContext, ReflectionCategory, JSX, ContainerReflection, ReflectionKind} from "typedoc";
 import { wbr } from "../utils/lib";
 
 function renderCategory({ urlTo }: DefaultThemeRenderContext, item: ReflectionCategory, prependName = "") {
@@ -7,9 +7,9 @@ function renderCategory({ urlTo }: DefaultThemeRenderContext, item: ReflectionCa
             <h3>{prependName ? `${prependName} ${item.title}` : item.title}</h3>
             <ul class="tsd-index-list" aria-hidden="true">
                 {item.children.map((item) => (
-                    <li class={item.cssClasses}>
+                    <li class={ReflectionKind.classString(item.kind)}>
                         <a href={urlTo(item)} class="tsd-kind-icon">
-                            {item.name ? wbr(item.name) : <em>{wbr(item.kindString!)}</em>}
+                            {item.name ? wbr(item.name) : <em>{wbr(ReflectionKind.singularString(item.kind!))}</em>}
                         </a>
                     </li>
                 ))}
