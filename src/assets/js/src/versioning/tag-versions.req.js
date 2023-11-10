@@ -1,6 +1,6 @@
 (function () {
     const versionsJson = $('body').data('api-versions-json');
-    const defaultUrl = $('body').data('default-url');
+    const defaultUrl = $('body').attr('default-url');
     $.ajax({
         url: versionsJson,
         type: "get",
@@ -14,18 +14,19 @@
 
         folders = folders.reverse();
         folders.forEach(function (f) {
-            const versionUrl = defaultUrl.replace("typescript/latest'", f + "/typescript")
+            const versionUrl = defaultUrl.replace("typescript/latest", f + "/typescript");
             select.append($('<option>', {
                 value: versionUrl,
                 text: f
             }));
         });
 
-        const version = folders.filter(function(v){ return window.location.href.indexOf(v) >= 0;})[0];
+        const version = folders.filter(function(v){ return window.location.href.indexOf(v) >= 0;})[0] || folders[0];
+        const currentVersionUrl = defaultUrl.replace("typescript/latest", version + "/typescript");
         if (version) {
-            select.val(versionUrl);
+            select.val(currentVersionUrl);
         } else {
-            select.val(versionUrl);
+            select.val(currentVersionUrl);
         }
     });
 
