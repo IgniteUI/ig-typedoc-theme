@@ -1,0 +1,42 @@
+{
+    "en": {
+        "development": {
+            "url": "https://dev.infragistics.local",
+            "gaID": "GTM-WLXLBZD",
+            "versions": "https://staging.infragistics.local/ignite-ui-web-components/docs/webcomponents-api-docs-versions.json",
+            "typedoc_default_url": "https://staging.infragistics.local/products/ignite-ui-web-components/docs/typescript/"
+        },
+        "staging": {
+            "url": "https://staging.infragistics.local",
+            "gaID": "GTM-NCKNPN",
+            "versions": "https://staging.infragistics.local/ignite-ui-web-components/docs/webcomponents-api-docs-versions.json",
+            "typedoc_default_url": "https://staging.infragistics.local/products/ignite-ui-web-components/docs/typescript/"
+        },
+        "production": {
+            "url": "https://www.infragistics.com",
+            "gaID": "GTM-T65CF7",
+            "versions": "https://www.infragistics.com/ignite-ui-web-components/docs/webcomponents-api-docs-versions-prod.json",
+            "typedoc_default_url": "https://www.infragistics.com/products/ignite-ui-web-components/docs/typescript/"
+        }
+    },
+    "jp": {
+        "development": {
+            "url": "https://jp.dev.infragistics.local",
+            "gaID": "GTM-NNHVMC7",
+            "versions": "https://jp.staging.infragistics.local/ignite-ui-web-components/docs/webcomponents-api-docs-versions-jp.json",
+            "typedoc_default_url": "https://jp.staging.infragistics.local/products/ignite-ui-web-components/docs/typescript/"
+        },
+        "staging": {
+            "url": "https://jp.staging.infragistics.local",
+            "gaID": "GTM-WLWSDK",
+            "versions": "https://jp.staging.infragistics.local/ignite-ui-web-components/docs/webcomponents-api-docs-versions-jp.json",
+            "typedoc_default_url": "https://jp.staging.infragistics.local/products/ignite-ui-web-components/docs/typescript/"
+        },
+        "production": {
+            "url": "https://jp.infragistics.com",
+            "gaID": "GTM-KVNSWJ",
+            "versions": "https://jp.infragistics.com/ignite-ui-web-components/docs/webcomponents-api-docs-versions-prod-jp.json",
+            "typedoc_default_url": "https://jp.infragistics.com/products/ignite-ui-web-components/docs/typescript/"
+        }
+    }
+}
