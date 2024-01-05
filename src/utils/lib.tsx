@@ -98,7 +98,10 @@ export function getConfigData(context: DefaultThemeRenderContext, prop: string, 
     const product = context.options.getValue('product') as string;
     const prodArr = product.split('-');
     const prodName = prodArr[prodArr.length - 1];
-    const fileName = configOption ?? (prodName == 'angular' ? 'config.json' : prodName + '.config.json');
+    let fileName = prodName == 'angular' ? 'config.json' : prodName + '.config.json';
+    if (configOption && configOption !== "") {
+        fileName = configOption;
+    }
     const filePath = getConfigFilePath(fileName);
 
     const config = JSON.parse(fs.readFileSync(filePath, 'utf8'));
