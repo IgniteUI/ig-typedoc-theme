@@ -67,7 +67,7 @@ export function load(app: Application) {
         )
     )
 
-    app.listenTo(app.renderer, RendererEvent.END, () => {
+    app.renderer.on(RendererEvent.END, () => {
         const from = resolve(__dirname, "assets");
         const to = resolve(app.options.getValue("out"), "assets");
         cpSync(from, to, { recursive: true });

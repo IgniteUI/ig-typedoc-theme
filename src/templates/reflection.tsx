@@ -48,23 +48,25 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                         {context.memberSignatures(props.model)}
                     </section>
                 )}
-                {!!props.model.indexSignature && (
-                    <section class={"tsd-panel " + ReflectionKind.classString(props.model.kind)}>
-                        <h3 class="tsd-before-signature">Indexable</h3>
-                        <div class="tsd-signature tsd-kind-icon">
-                            <span class="tsd-signature-symbol"></span>
-                            {props.model.indexSignature.parameters!.map((item) => (
-                                <>
-                                    {item.name}: {context.type(item.type)}
-                                </>
-                            ))}
-                            <span class="tsd-signature-symbol">{"]: "}</span>
-                            {context.type(props.model.indexSignature.type)}
-                        </div>
-                        {props.model.indexSignature.comment}
-                        {props.model.indexSignature?.type instanceof ReflectionType &&
-                            context.parameter(props.model.indexSignature.type.declaration)}
-                    </section>
+                {!!props.model.indexSignatures && (
+                    props.model.indexSignatures.map((signature) => {
+                        <section class={"tsd-panel " + ReflectionKind.classString(props.model.kind)}>
+                            <h3 class="tsd-before-signature">Indexable</h3>
+                            <div class="tsd-signature tsd-kind-icon">
+                                <span class="tsd-signature-symbol"></span>
+                                {signature.parameters!.map((item) => (
+                                    <>
+                                        {item.name}: {context.type(item.type)}
+                                    </>
+                                ))}
+                                <span class="tsd-signature-symbol">{"]: "}</span>
+                                {context.type(signature.type)}
+                            </div>
+                            {signature.comment}
+                            {signature?.type instanceof ReflectionType &&
+                                context.parameter(signature.type.declaration)}
+                        </section>
+                    })
                 )}
             </>
         )}
