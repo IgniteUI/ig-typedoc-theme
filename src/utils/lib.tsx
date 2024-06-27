@@ -54,7 +54,7 @@ export function renderTypeParametersSignature(
 export function renderFlags(flags: ReflectionFlags) {
     return (
         <>
-            {(flags as unknown as ReflectionFlags[]).map((item) => (
+            {Array.from(flags as unknown as []).map((item) => (
                 <>
                     <span class={"tsd-flag ts-flag" + item}>{item}</span>{" "}
                 </>
