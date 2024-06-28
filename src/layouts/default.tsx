@@ -17,8 +17,8 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
     return (
         <html class="default no-js" lang="en">
             <head>
-                <meta charSet="utf-8" />
-                {context.hook("head.begin")}
+                <meta charset="utf-8" />
+                {context.hook("head.begin", context)}
                 <meta http-equiv="x-ua-compatible" content="IE=edge" />
                 <title>
                     {props.model.name === props.project.name ?
@@ -50,10 +50,10 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                 <script async src={context.relativeURL("assets/search.js")} id="search-script"></script>
 
                 {analytics(context)}
-                {context.hook("head.end")}
+                {context.hook("head.end", context)}
             </head>
             <body id="body" data-base-url={baseUrl} data-api-versions-json={apiJsonFile} default-url={defaultUrl}>
-                {context.hook('body.begin')}
+                {context.hook('body.begin', context)}
                 {/* Google Tag Manager (noscript) */}
                 <noscript>
                     <iframe src={`https://www.googletagmanager.com/ns.html?id=${gaID}`}
@@ -137,7 +137,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                 <script src="https://unpkg.com/lunr/lunr.js"></script>
                 <script src={context.relativeURL("assets/main.js")}></script>
 
-                {context.hook("body.end")}
+                {context.hook("body.end", context)}
             </body>
         </html>
     );
