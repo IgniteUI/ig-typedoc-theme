@@ -51,10 +51,10 @@
     "webpack-merge": "^5.7.3"
   },
   "peerDependecies": {
-    "typedoc": "^0.25.3",
-    "typedoc-plugin-localization": "^3.0.4"
+    "typedoc": "^0.26.2",
+    "typedoc-plugin-localization": "^3.0.5"
   },
   "dependencies": {
-    "typedoc-plugin-localization": "^3.0.4"
+    "typedoc-plugin-localization": "^3.0.5"
   }
 }
