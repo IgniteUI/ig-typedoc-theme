@@ -1,5 +1,5 @@
 import { DefaultThemeRenderContext, JSX } from "typedoc";
-import { getConfigData } from "../utils/lib";
+import { getConfigData } from "../utils/lib.js";
 
 export function analytics(context: DefaultThemeRenderContext) {
     const gaID = getConfigData(context, "gaID");

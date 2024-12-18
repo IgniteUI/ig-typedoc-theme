@@ -1,7 +1,7 @@
 import { DefaultThemeRenderContext, PageEvent, Reflection, JSX } from 'typedoc';
-import { navEn } from './infranav';
-import { navJp } from './infranav.ja';
-const plugin = require('typedoc-plugin-localization');
+import { navEn } from './infranav.js';
+import { navJp } from './infranav.ja.js';
+import { localize } from 'typedoc-plugin-localization';
 
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
     if (!context.options.getValue('name').includes('Ignite UI')) {
@@ -36,12 +36,12 @@ export const header = (context: DefaultThemeRenderContext, props: PageEvent<Refl
                         <ul class="tsd-nav">
                             <li class="tsd-nav-item">
                                 <button class="tsd-button--flat">
-                                    <a href={link}>{plugin.localize('Components')}</a>
+                                    <a href={link}>{localize('Components')}</a>
                                 </button>
                             </li>
                             <li class="tsd-nav-item">
                                 <button class="tsd-button">
-                                    <a href={link}>{plugin.localize('Get Started')}</a>
+                                    <a href={link}>{localize('Get Started')}</a>
                                 </button>
                             </li>
                         </ul>

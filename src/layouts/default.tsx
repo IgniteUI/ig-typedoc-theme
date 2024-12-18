@@ -1,10 +1,10 @@
 import { DefaultThemeRenderContext, PageEvent, Reflection, ReflectionKind, JSX, RenderTemplate } from "typedoc";
-import { analytics } from "../partials/analytics";
-import { footer } from "../partials/footer";
-import { header } from "../partials/header";
-import { navigation } from "../partials/navigation";
-import { getConfigData, hasTypeParameters, join } from "../utils/lib";
-const plugin = require('typedoc-plugin-localization');
+import { analytics } from "../partials/analytics.js";
+import { footer } from "../partials/footer.js";
+import { header } from "../partials/header.js";
+import { navigation } from "../partials/navigation.js";
+import { getConfigData, hasTypeParameters, join } from "../utils/lib.js";
+import { localize } from 'typedoc-plugin-localization';
 
 export const defaultLayout = (context: DefaultThemeRenderContext, template: RenderTemplate<PageEvent<Reflection>>, props: PageEvent<Reflection>) => {
     const defaultEnUrl = getConfigData(context, 'typedoc_default_url', 'en');
@@ -68,7 +68,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                             <div class="table-cell" id="tsd-search" data-index={searchPath} data-base={context.relativeURL("./")}>
                                 <div class="field">
                                     <label for="tsd-search-field" class="material-icons">search</label>
-                                    <input id="tsd-search-field" type="text" placeholder={plugin.localize('Search API')} />
+                                    <input id="tsd-search-field" type="text" placeholder={localize('Search API')} />
                                 </div>
                                 <ul class="results">
                                     <li class="state loading">Preparing search index...</li>
@@ -78,26 +78,26 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                             <div id="tsd-filter">
                                 <div class="tsd-filter-group">
                                     <div class="tsd-select" id="tsd-filter-visibility">
-                                        <span class="tsd-select-label">{plugin.localize('All')}</span>
+                                        <span class="tsd-select-label">{localize('All')}</span>
                                             <ul class="tsd-select-list">
-                                                <li data-value="public">{plugin.localize('Public')}</li>
-                                                <li data-value="protected">{plugin.localize('Public/Protected')}</li>
-                                                <li data-value="private" class="selected">{plugin.localize('All')}</li>
+                                                <li data-value="public">{localize('Public')}</li>
+                                                <li data-value="protected">{localize('Public/Protected')}</li>
+                                                <li data-value="private" class="selected">{localize('All')}</li>
                                             </ul>
                                     </div>
                                     <input type="checkbox" id="tsd-filter-inherited" checked />
-                                    <label class="tsd-widget" for="tsd-filter-inherited">{plugin.localize('Inherited')}</label>
+                                    <label class="tsd-widget" for="tsd-filter-inherited">{localize('Inherited')}</label>
 
                                     {!context.options.getValue("excludeExternals") && (
                                     <>
                                         <input type="checkbox" id="tsd-filter-externals" checked={true} />
-                                        <label class="tsd-widget" for="tsd-filter-externals">{plugin.localize('Externals')}</label>
+                                        <label class="tsd-widget" for="tsd-filter-externals">{localize('Externals')}</label>
                                     </>
                                     )}
                                     {!context.options.getValue("excludeExternals") && (
                                     <>
                                         <input type="checkbox" id="tsd-filter-externals" />
-                                        <label class="tsd-widget" for="tsd-filter-only-exported">{plugin.localize('Only exported')}</label>
+                                        <label class="tsd-widget" for="tsd-filter-only-exported">{localize('Only exported')}</label>
                                     </>
                                     )}
                                 </div>

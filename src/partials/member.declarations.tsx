@@ -1,6 +1,6 @@
 import { DeclarationReflection, DefaultThemeRenderContext, JSX, ReflectionType } from 'typedoc';
-import { renderTypeParametersSignature, wbr } from '../utils/lib';
-const plugin = require('typedoc-plugin-localization');
+import { renderTypeParametersSignature, wbr } from '../utils/lib.js';
+import { localize } from 'typedoc-plugin-localization';
 
 export const memberDeclaration = (context: DefaultThemeRenderContext, props: DeclarationReflection) => (
     <>
@@ -30,14 +30,14 @@ export const memberDeclaration = (context: DefaultThemeRenderContext, props: Dec
 
         {!!props.typeParameters && (
             <>
-                <h4 class="tsd-type-parameters-title">{plugin.localize('Type parameters')}</h4>
+                <h4 class="tsd-type-parameters-title">{localize('Type parameters')}</h4>
                 {context.typeParameters(props.typeParameters)}
             </>
         )}
         {props.type instanceof ReflectionType && (
             <div class="tsd-type-declaration">
-                <h4>{plugin.localize('Type declaration')}</h4>
-                {context.parameter(props.type.declaration)}
+                <h4>{localize('Type declaration')}</h4>
+                {context.typeDeclaration(props.type)}
             </div>
         )}
     </>

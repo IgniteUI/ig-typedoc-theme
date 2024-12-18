@@ -5,6 +5,7 @@
   "author": "Infragistics",
   "license": "MIT",
   "main": "dist/index.js",
+  "type": "module",
   "files": [
     "dist",
     "LICENSE"
@@ -26,7 +27,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/lunr": "^2.3.3",
-    "@types/node": "^18.11.0",
+    "@types/node": "^20.17.6",
     "@types/react": "^17.0.40",
     "autoprefixer": "^9.8.6",
     "clean-webpack-plugin": "^3.0.0",
@@ -43,7 +44,7 @@
     "sass-loader": "^10.1.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^8.0.12",
-    "typedoc": "^0.26.2",
+    "typedoc": "^0.27.0",
     "typescript": "^5.5.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.11.1",
@@ -51,10 +52,10 @@
     "webpack-merge": "^5.7.3"
   },
   "peerDependencies": {
-    "typedoc": "^0.26.2",
-    "typedoc-plugin-localization": "^3.0.5"
+    "typedoc": "^0.27.0",
+    "typedoc-plugin-localization": "file:../../../typedoc-plugin-localization-1.0.4.tgz"
   },
   "dependencies": {
-    "typedoc-plugin-localization": "^3.0.5"
+    "typedoc-plugin-localization": "file:../../../typedoc-plugin-localization-1.0.4.tgz"
   }
 }

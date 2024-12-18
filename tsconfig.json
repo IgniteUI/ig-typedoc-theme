@@ -2,15 +2,13 @@
     "include": ["src"],
 
     "compilerOptions": {
-        "target": "es2018",
-        "module": "commonjs",
-        "moduleResolution": "node",
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true,
         "strict": true,
         "outDir": "dist",
-        "esModuleInterop": true,
-
         "jsx": "react",
         "jsxFactory": "JSX.createElement",
         "jsxFragmentFactory": "JSX.Fragment"
