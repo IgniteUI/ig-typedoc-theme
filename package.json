@@ -53,9 +53,9 @@
   },
   "peerDependencies": {
     "typedoc": "^0.27.0",
-    "typedoc-plugin-localization": "file:../../../typedoc-plugin-localization-1.0.4.tgz"
+    "typedoc-plugin-localization": "^3.0.6"
   },
   "dependencies": {
-    "typedoc-plugin-localization": "file:../../../typedoc-plugin-localization-1.0.4.tgz"
+    "typedoc-plugin-localization": "^3.0.6"
   }
 }
