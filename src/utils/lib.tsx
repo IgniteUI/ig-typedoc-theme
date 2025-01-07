@@ -1,6 +1,10 @@
-import * as path from 'path';
-import * as fs from 'fs';
+import { readFileSync, existsSync }  from 'fs';
+import path from "path";
+import { fileURLToPath } from "url";
 import { DeclarationReflection, Reflection, SignatureReflection, TypeParameterReflection, JSX, DefaultThemeRenderContext, ReflectionFlags, ReflectionKind } from "typedoc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export function hasTypeParameters(
     reflection: Reflection
@@ -104,7 +108,7 @@ export function getConfigData(context: DefaultThemeRenderContext, prop: string, 
     }
     const filePath = getConfigFilePath(fileName);
 
-    const config = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const config = JSON.parse(readFileSync(filePath, 'utf8'));
     const settingOpt =  context.options.getValue('localize') as string;
     const getLang = lang ? lang : settingOpt;
 
@@ -119,7 +123,7 @@ export function getConfigData(context: DefaultThemeRenderContext, prop: string, 
 
 export function getConfigFilePath(fileName: string) : string {
     const normalizedPath = path.join(__dirname, '..' , fileName);
-    if (fs.existsSync(normalizedPath)) {
+    if (existsSync(normalizedPath)) {
         return normalizedPath;
     } else {
         // fallback to default config

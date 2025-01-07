@@ -1,4 +1,4 @@
-import { classNames, wbr } from '../utils/lib';
+import { classNames, wbr } from '../utils/lib.js';
 import {DefaultThemeRenderContext, JSX, DeclarationReflection, PageEvent, Reflection, ReflectionKind, ContainerReflection} from 'typedoc';
 
 export function navigation(context: DefaultThemeRenderContext, props: PageEvent<Reflection>) {

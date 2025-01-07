@@ -1,5 +1,5 @@
 import { DeclarationReflection, DefaultThemeRenderContext, JSX, SignatureReflection } from 'typedoc';
-const plugin = require('typedoc-plugin-localization');
+import { localize } from 'typedoc-plugin-localization';
 
 export const memberSources = (
     context: DefaultThemeRenderContext,
@@ -10,7 +10,7 @@ export const memberSources = (
     if (props.implementationOf) {
         sources.push(
             <p>
-                {plugin.localize('Implementation of') + ' '}
+                {localize('Implementation of') + ' '}
                 {context.typeAndParent(props.implementationOf)}
             </p>
         );
@@ -18,7 +18,7 @@ export const memberSources = (
     if (props.inheritedFrom) {
         sources.push(
             <p>
-                {plugin.localize('Inherited from') + ' '}
+                {localize('Inherited from') + ' '}
                 {context.typeAndParent(props.inheritedFrom)}
             </p>
         );
@@ -26,7 +26,7 @@ export const memberSources = (
     if (props.overwrites) {
         sources.push(
             <p>
-                {plugin.localize('Overrides') + ' '}
+                {localize('Overrides') + ' '}
                 {context.typeAndParent(props.overwrites)}
             </p>
         );
@@ -37,14 +37,14 @@ export const memberSources = (
                 {props.sources.map((item) =>
                     item.url ? (
                         <li>
-                            {plugin.localize('Defined in') + ' '}
+                            {localize('Defined in') + ' '}
                             <a href={item.url}>
                                 {item.fileName}:{item.line}
                             </a>
                         </li>
                     ) : (
                         <li>
-                            {plugin.localize('Defined in') + ' '} {item.fileName}:{item.line}
+                            {localize('Defined in') + ' '} {item.fileName}:{item.line}
                         </li>
                     )
                 )}

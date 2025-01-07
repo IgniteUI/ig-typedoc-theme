@@ -1,6 +1,6 @@
 import {DefaultThemeRenderContext, JSX, PageEvent, Reflection} from 'typedoc';
-import { footerEn } from './infrafoot';
-import { footerJp } from './infrafoot.ja';
+import { footerEn } from './infrafoot.js';
+import { footerJp } from './infrafoot.ja.js';
 
 export function footer(context: DefaultThemeRenderContext, props: PageEvent<Reflection>) {
     if (!context.options.getValue('name').includes('Ignite UI')) {

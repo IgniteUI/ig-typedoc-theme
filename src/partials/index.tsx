@@ -1,5 +1,5 @@
 import { DefaultThemeRenderContext, ReflectionCategory, JSX, ContainerReflection, ReflectionKind} from "typedoc";
-import { wbr } from "../utils/lib";
+import { wbr } from "../utils/lib.js";
 
 function renderCategory({ urlTo }: DefaultThemeRenderContext, item: ReflectionCategory, prependName = "") {
     return (

@@ -1,15 +1,32 @@
-import { cpSync } from 'fs';
-import { resolve } from 'path';
-import { navigation } from './partials/navigation';
-import { index } from './partials/index';
-import { memberSources } from './partials/member.sources';
-import { memberDeclaration } from './partials/member.declarations';
-import { reflectionTemplate } from './templates/reflection';
-import { memberSignatureBody } from './partials/member.signature.body';
-import { breadcrumb } from './partials/breadcrumb';
+import { cpSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-import { Application, DefaultTheme, DefaultThemeRenderContext, JSX, Options, PageEvent, Reflection, RenderTemplate, Renderer, RendererEvent } from "typedoc";
-import { defaultLayout } from "./layouts/default";
+import { navigation } from "./partials/navigation.js";
+import { index } from "./partials/index.js";
+import { memberSources } from "./partials/member.sources.js";
+import { memberDeclaration } from "./partials/member.declarations.js";
+import { reflectionTemplate } from "./templates/reflection.js";
+import { memberSignatureBody } from "./partials/member.signature.body.js";
+import { breadcrumb } from "./partials/breadcrumb.js";
+
+import {
+    Application,
+    DefaultTheme,
+    DefaultThemeRenderContext,
+    JSX,
+    Options,
+    PageEvent,
+    Reflection,
+    RenderTemplate,
+    Renderer,
+    RendererEvent,
+} from "typedoc";
+import { defaultLayout } from "./layouts/default.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 function bind<F, L extends any[], R>(fn: (f: F, ...a: L) => R, first: F) {
     return (...r: L) => fn(first, ...r);
@@ -28,12 +45,10 @@ export class IgThemeRenderContext extends DefaultThemeRenderContext {
         this.breadcrumb = bind(breadcrumb, this);
 
         this.defaultLayout = (template: RenderTemplate<PageEvent<Reflection>>, props: PageEvent<Reflection>) => {
-            return (
-                defaultLayout(this, template, props)
-            );
-        }
+            return defaultLayout(this, template, props);
+        };
     }
-};
+}
 
 export class IgTheme extends DefaultTheme {
     private _ctx?: IgThemeRenderContext;
@@ -43,35 +58,31 @@ export class IgTheme extends DefaultTheme {
     }
 
     override getRenderContext(pageEvent: PageEvent<Reflection>): IgThemeRenderContext {
-        this._ctx ||= new IgThemeRenderContext(
-            this,
-            pageEvent,
-            this.application.options
-        );
+        this._ctx ||= new IgThemeRenderContext(this, pageEvent, this.application.options);
         return this._ctx;
     }
 }
 
 export function load(app: Application) {
     app.renderer.hooks.on(
-        'head.end',
+        "head.end",
         (context): JSX.Element => (
-            <link rel='stylesheet' href={context.relativeURL('assets/css/main.css')} />
+            <link rel="stylesheet" href={context.relativeURL("assets/css/main.css")} />
         )
-    )
+    );
 
     app.renderer.hooks.on(
-        'body.end',
+        "body.end",
         (context): JSX.Element => (
-            <script src={context.relativeURL('assets/common.js')} />
+            <script src={context.relativeURL("assets/common.js")} />
         )
-    )
+    );
 
     app.renderer.on(RendererEvent.END, () => {
-        const from = resolve(__dirname, "assets");
-        const to = resolve(app.options.getValue("out"), "assets");
+        const from = path.resolve(__dirname, "assets");
+        const to = path.resolve(app.options.getValue("out"), "assets");
         cpSync(from, to, { recursive: true });
     });
 
-    app.renderer.defineTheme('igtheme', IgTheme);
+    app.renderer.defineTheme("igtheme", IgTheme);
 }
