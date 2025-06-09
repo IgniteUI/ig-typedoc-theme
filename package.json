@@ -31,7 +31,7 @@
     "@types/react": "^17.0.40",
     "autoprefixer": "^9.8.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^7.0.0",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
     "file-merge-webpack-plugin": "^1.1.0",
