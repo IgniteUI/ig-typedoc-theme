@@ -49,7 +49,7 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                     </section>
                 )}
                 {!!props.model.indexSignatures && (
-                    props.model.indexSignatures.map((signature) => {
+                    props.model.indexSignatures.map((signature) => (
                         <section class={"tsd-panel " + ReflectionKind.classString(props.model.kind)}>
                             <h3 class="tsd-before-signature">Indexable</h3>
                             <div class="tsd-signature tsd-kind-icon">
@@ -63,9 +63,9 @@ export const reflectionTemplate = (context: DefaultThemeRenderContext, props: Pa
                                 {context.type(signature.type)}
                             </div>
                             {signature.comment}
-                            {signature?.type instanceof ReflectionType && context.typeDetailsIfUseful(signature.type)}
+                            {signature?.type instanceof ReflectionType && context.typeDetailsIfUseful(signature, signature.type)}
                         </section>
-                    })
+                    ))
                 )}
             </>
         )}

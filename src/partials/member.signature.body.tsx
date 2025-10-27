@@ -39,7 +39,7 @@ export const memberSignatureBody = (
                             </h5>
                             {context.commentSummary(item)}
                             {context.commentTags(item)}
-                            {item.type instanceof ReflectionType && context.typeDeclaration(item.type)}
+                            {item.type instanceof ReflectionType && context.typeDeclaration(item, item.type)}
                         </li>
                     ))}
                 </ul>
@@ -51,7 +51,7 @@ export const memberSignatureBody = (
                     {localize('Returns') + ' '}
                     {context.type(props.type)}
                 </h4>
-                {props.type instanceof ReflectionType && context.typeDeclaration(props.type)}
+                {props.type instanceof ReflectionType && context.typeDeclaration(props, props.type)}
             </>
         )}
     </>

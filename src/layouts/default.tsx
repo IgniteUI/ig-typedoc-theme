@@ -45,9 +45,9 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                 <link rel="stylesheet" href="https://infragistics.com/css/footer.css" />
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <link rel="stylesheet" href="https://use.typekit.net/zhy2hpz.css" />
-                <link rel="stylesheet" href={context.relativeURL("assets/css/main.css")} />
+                <link rel="stylesheet" href={context.relativeURL("/assets/css/main.css")} />
 
-                <script async src={context.relativeURL("assets/search.js")} id="search-script"></script>
+                <script async src={context.relativeURL("/assets/search.js")} id="search-script"></script>
 
                 {analytics(context)}
                 {context.hook("head.end", context)}
@@ -107,7 +107,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                         <div class="col-10 col-content">
                             <div class="tsd-page-title">
                                 <div class="container">
-                                    {!!props.model.parent && <ul class="tsd-breadcrumb">{context.breadcrumb(props.model)}</ul>}
+                                    {!!props.model.parent && <ul class="tsd-breadcrumb">{context.breadcrumbs(props.model)}</ul>}
                                     <h1>
                                         {ReflectionKind.singularString(props.model.kind) !== "Project" && `${ReflectionKind.singularString(props.model.kind) ?? ""} `}
                                         {props.model.name}
@@ -135,7 +135,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                 <script type="text/javascript" src="https://www.infragistics.com/assets/modern/scripts/plugins.nav.js"></script>
                 <script type="text/javascript" src="https://www.infragistics.com/assets/modern/scripts/navigation.js"></script>
                 <script src="https://unpkg.com/lunr/lunr.js"></script>
-                <script src={context.relativeURL("assets/main.js")}></script>
+                <script src={context.relativeURL("/assets/main.js")}></script>
 
                 {context.hook("body.end", context)}
             </body>
