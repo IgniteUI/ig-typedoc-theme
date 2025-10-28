@@ -68,14 +68,14 @@ export function load(app: Application) {
     app.renderer.hooks.on(
         "head.end",
         (context): JSX.Element => (
-            <link rel="stylesheet" href={context.relativeURL("/assets/css/main.css")} />
+            <link rel="stylesheet" href={context.relativeURL("assets/css/main.css")} />
         )
     );
 
     app.renderer.hooks.on(
         "body.end",
         (context): JSX.Element => (
-            <script src={context.relativeURL("/assets/common.js")} />
+            <script src={context.relativeURL("assets/common.js")} />
         )
     );
 
