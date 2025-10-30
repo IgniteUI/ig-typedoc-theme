@@ -107,7 +107,7 @@ export const defaultLayout = (context: DefaultThemeRenderContext, template: Rend
                         <div class="col-10 col-content">
                             <div class="tsd-page-title">
                                 <div class="container">
-                                    {!!props.model.parent && <ul class="tsd-breadcrumb">{context.breadcrumb(props.model)}</ul>}
+                                    {!!props.model.parent && <ul class="tsd-breadcrumb">{context.breadcrumbs(props.model)}</ul>}
                                     <h1>
                                         {ReflectionKind.singularString(props.model.kind) !== "Project" && `${ReflectionKind.singularString(props.model.kind) ?? ""} `}
                                         {props.model.name}

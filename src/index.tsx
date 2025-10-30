@@ -21,6 +21,7 @@ import {
     RenderTemplate,
     Renderer,
     RendererEvent,
+    Router,
 } from "typedoc";
 import { defaultLayout } from "./layouts/default.js";
 
@@ -33,8 +34,8 @@ function bind<F, L extends any[], R>(fn: (f: F, ...a: L) => R, first: F) {
 }
 
 export class IgThemeRenderContext extends DefaultThemeRenderContext {
-    constructor(theme: DefaultTheme, page: PageEvent<Reflection>, options: Options) {
-        super(theme, page, options);
+    constructor(router: Router, theme: DefaultTheme, page: PageEvent<Reflection>, options: Options) {
+        super(router, theme, page, options);
 
         this.reflectionTemplate = bind(reflectionTemplate, this);
         this.navigation = bind(navigation, this);
@@ -42,7 +43,7 @@ export class IgThemeRenderContext extends DefaultThemeRenderContext {
         this.memberSources = bind(memberSources, this);
         this.memberDeclaration = bind(memberDeclaration, this);
         this.memberSignatureBody = bind(memberSignatureBody, this);
-        this.breadcrumb = bind(breadcrumb, this);
+        this.breadcrumbs = bind(breadcrumb, this);
 
         this.defaultLayout = (template: RenderTemplate<PageEvent<Reflection>>, props: PageEvent<Reflection>) => {
             return defaultLayout(this, template, props);
@@ -58,7 +59,7 @@ export class IgTheme extends DefaultTheme {
     }
 
     override getRenderContext(pageEvent: PageEvent<Reflection>): IgThemeRenderContext {
-        this._ctx ||= new IgThemeRenderContext(this, pageEvent, this.application.options);
+        this._ctx ||= new IgThemeRenderContext(this.router, this, pageEvent, this.application.options);
         return this._ctx;
     }
 }

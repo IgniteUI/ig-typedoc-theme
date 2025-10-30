@@ -1,7 +1,7 @@
-import { DefaultThemeRenderContext, ReflectionCategory, JSX, ContainerReflection, ReflectionKind} from "typedoc";
+import { DefaultThemeRenderContext, ReflectionCategory, JSX, ContainerReflection, ReflectionKind, ReflectionGroup} from "typedoc";
 import { wbr } from "../utils/lib.js";
 
-function renderCategory({ urlTo }: DefaultThemeRenderContext, item: ReflectionCategory, prependName = "") {
+function renderCategory({ urlTo }: DefaultThemeRenderContext, item: ReflectionCategory | ReflectionGroup, prependName = "") {
     return (
         <section class="tsd-index-section">
             <h3>{prependName ? `${prependName} ${item.title}` : item.title}</h3>

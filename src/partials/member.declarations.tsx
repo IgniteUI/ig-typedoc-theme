@@ -37,7 +37,7 @@ export const memberDeclaration = (context: DefaultThemeRenderContext, props: Dec
         {props.type instanceof ReflectionType && (
             <div class="tsd-type-declaration">
                 <h4>{localize('Type declaration')}</h4>
-                {context.typeDeclaration(props.type)}
+                {context.typeDeclaration(props, props.type)}
             </div>
         )}
     </>

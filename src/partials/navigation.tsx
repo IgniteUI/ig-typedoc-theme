@@ -1,5 +1,5 @@
 import { classNames, wbr } from '../utils/lib.js';
-import {DefaultThemeRenderContext, JSX, DeclarationReflection, PageEvent, Reflection, ReflectionKind, ContainerReflection} from 'typedoc';
+import {DefaultThemeRenderContext, JSX, PageEvent, Reflection, ReflectionKind, ContainerReflection} from 'typedoc';
 
 export function navigation(context: DefaultThemeRenderContext, props: PageEvent<Reflection>) {
     return (
