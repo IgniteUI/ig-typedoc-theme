@@ -59,8 +59,7 @@ export class IgTheme extends DefaultTheme {
     }
 
     override getRenderContext(pageEvent: PageEvent<Reflection>): IgThemeRenderContext {
-        this._ctx ||= new IgThemeRenderContext(this.router, this, pageEvent, this.application.options);
-        return this._ctx;
+        return new IgThemeRenderContext(this.router, this, pageEvent, this.application.options);
     }
 }
 
